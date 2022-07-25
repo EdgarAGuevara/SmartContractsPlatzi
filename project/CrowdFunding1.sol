@@ -3,11 +3,14 @@
 pragma solidity >=0.7.0 <0.9.0;
 
 contract CrowdFunding {
+    // This is the first version of this project.
+    // you can see like the fisrt step of new project.
+
     string public id;
     string public name;
     string public description;
     address payable public author;
-    string public state = "Opened";
+    string public status = "Opened";
     uint256 public funds;
     uint256 public fundraisingGoal;
 
@@ -29,7 +32,8 @@ contract CrowdFunding {
         funds += msg.value;
     }
 
-    function changeProjectState(string calldata newState) public {
-        state = newState;
+    function changeStatusProject(string calldata newStatus) public {
+        // beacause of newStatus it wont be changed we define it like calldata.
+        status = newStatus;
     }
 }
