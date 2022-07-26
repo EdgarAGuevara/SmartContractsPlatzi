@@ -3,6 +3,9 @@
 pragma solidity >=0.7.0 <0.9.0;
 
 contract CrowdFunding {
+    // This is the second version of this project.
+    // you can see that there now are two new nmodifiers and  new events.
+
     string public id;
     string public name;
     string public description;
@@ -13,7 +16,7 @@ contract CrowdFunding {
 
     event ProjectFunded(string projectId, uint256 value);
 
-    event ProjectStateChanged(string id, string state);
+    event ProjectStateChanged(address author,string name, string newStatus);
 
     constructor(
         string memory _id,
@@ -49,6 +52,6 @@ contract CrowdFunding {
 
     function changeProjectState(string calldata newState) public isAuthor {
         state = newState;
-        emit ProjectStateChanged(id, newState);
+        emit ProjectStateChanged(msg.sender,id, newState);
     }
 }
